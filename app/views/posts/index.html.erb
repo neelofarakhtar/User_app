@@ -1,0 +1,30 @@
+<h1> My posts</h1>
+<div class="center font-raleway ">
+  <%= link_to new_post_path, class: "btn btn-secondary" do%>
+    New Post?
+  <%end%>
+</div>
+
+<h1>Show all users</h1>
+
+<% @posts.each do |post| %>
+  <tr>
+    <p><%= post.id %></p>
+    <td><%= post.content%></td><br>
+    <td> <% if post.filename.attached? %>
+    <image src ="<%= (url_for(post.filename))%>" height = "100px"><br>
+  <% end -%></td><br>
+   <%= link_to "Show Post", post_path(post) %>  <br>
+    <%= link_to "Destroy", post_path(post), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+               } %><br>
+    <% if (current_user.roles.map(&:name).include? ('admin')) %>
+      <%= link_to "edit post",edit_post_path(post)%>  <br> 
+<% end -%>
+     
+     <br>
+  </tr>
+ 
+<% end %>
+

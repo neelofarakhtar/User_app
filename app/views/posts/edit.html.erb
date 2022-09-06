@@ -1,0 +1,17 @@
+<p>Create a edit post </p>
+
+  <%= form_for(@post) do |f| %>
+      <%= render "devise/shared/error_messages", resource: @post %>
+      <div class="form-group">
+        <%= f.text_area :content, class:"form-control" %><br />
+      </div>
+      <div class="form-group"> 
+        <p>Select Image</p>
+        <%= f.file_field :filename, class:"form-control" %>
+        <br />
+      </div>
+      <div>
+        <%= f.submit 'Update Post', class:"btn btn-secondary col-md-3"%>
+      </div>
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+<h1>Home</h1>
+<% if current_user.present? %>
+ Are you admin?<%= current_user.has_role? :admin%>
+ <%= current_user.roles.pluck(:name)%><br>
+    <% if current_user.profile.nil? %>
+    <%= link_to "add profile", new_profile_path %><br>
+    <%else %>
+      Age:  <%= @profile.age %><br>
+      Mobile_number:<%= @profile.mobile_number %><br>
+      Address:  <%= @profile.address %><br>
+     <%end %>
+        <%= link_to "Upload Post",posts_path%>
+        <%= link_to "Edit account", edit_user_registration_path%><br>
+        <%= button_to "log_out",destroy_user_session_path, method: :delete %>
+<% else %>
+ <%= link_to "sign_in", new_user_session_path %><br>
+ <%= link_to "sign_up", new_user_registration_path,class: "btn btn-lg btn-primary rounded-pill" %> <br />
+  <% end %>
+
+
+
+

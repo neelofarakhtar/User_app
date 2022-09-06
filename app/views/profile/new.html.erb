@@ -1,0 +1,22 @@
+ <h1>Add profile</h1>
+<%= form_with model: Profile.new,url: '/profile' do |form| %>
+  <div>
+    <%= form.label :age %><br>
+    <%= form.text_field :age %>
+  </div>
+
+  <div>
+    <%= form.label :mobile_number %><br>
+    <%= form.text_area :mobile_number %>
+  </div>
+
+   <div>
+    <%= form.label :address %><br>
+    <%= form.text_area :address %>
+  </div>
+  <%= form.hidden_field :user_id,value: current_user.id %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
