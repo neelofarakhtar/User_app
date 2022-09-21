@@ -1,0 +1,5 @@
+<h3>show user follower</h3>
+
+<%=button_to "follow", user_relationships_path(@user),  method: :POST, class:'btn btn-danger'%>
+         <h3>Followers: <%= @user.followers.count %></h3>
+         <h3>Following: <%= @user.following.count %></h3>
